@@ -5,6 +5,8 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace APIOAPE.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioServices _usuarioServices;
