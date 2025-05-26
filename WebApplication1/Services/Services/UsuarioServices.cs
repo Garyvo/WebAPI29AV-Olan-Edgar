@@ -74,6 +74,24 @@ namespace APIOAPE.Services.Services
             }
 
         }
-       
+        public async Task<Response<Usuario>> DeleteUser(string request)
+        {
+            try
+            {
+                Usuario usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.UserName == request);
+
+                _context.Usuarios.Remove(usuario);
+                await _context.SaveChangesAsync();
+
+                return new Response<Usuario>(usuario, "Usuario Eliminado exitosamente");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrio un error " + ex.Message);
+            }
+
+        }
+
     }
 }

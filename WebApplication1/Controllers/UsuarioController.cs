@@ -37,6 +37,13 @@ namespace APIOAPE.Controllers
             var response = await _usuarioServices.Create(request);
             return Ok(response);
         }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteUser (string request)
+        {
+            var response = await _usuarioServices.DeleteUser(request);
+            return Ok(response);
+        }
             
     }
 }

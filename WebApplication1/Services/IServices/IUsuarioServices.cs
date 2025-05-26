@@ -9,5 +9,7 @@ namespace APIOAPE.Services.IServices
         public Task<Response<List<Usuario>>> GetAll();
         public Task<Response<Usuario>> GetbyId(int id);
         public Task<Response<Usuario>> Create(UsuarioRequest request);
+
+        public Task<Response<Usuario>> DeleteUser(string request);
     }
 }
