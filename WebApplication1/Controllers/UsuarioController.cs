@@ -39,11 +39,21 @@ namespace APIOAPE.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult> DeleteUser (string request)
+        public async Task<IActionResult> DeleteUser (string request)
         {
             var response = await _usuarioServices.DeleteUser(request);
             return Ok(response);
         }
-            
+
+        [HttpPut]
+
+        public async Task<IActionResult> UpdateUser(string request, UsuarioRequest request2)
+        {
+            var response = await _usuarioServices.UpdateUser(request, request2);
+            return Ok(response);
+        }
+
+
+
     }
 }

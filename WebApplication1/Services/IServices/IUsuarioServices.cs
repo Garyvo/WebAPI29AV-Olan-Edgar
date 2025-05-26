@@ -11,5 +11,7 @@ namespace APIOAPE.Services.IServices
         public Task<Response<Usuario>> Create(UsuarioRequest request);
 
         public Task<Response<Usuario>> DeleteUser(string request);
+
+        public Task<Response<Usuario>> UpdateUser(string request, UsuarioRequest request2);
     }
 }

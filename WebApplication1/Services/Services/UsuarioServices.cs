@@ -93,5 +93,31 @@ namespace APIOAPE.Services.Services
 
         }
 
+        public async Task<Response<Usuario>> UpdateUser(string request, UsuarioRequest request2)
+        {
+            try
+            {
+
+                Usuario usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.UserName == request);
+
+
+                usuario.Nombre = request2.Nombre;
+                    usuario.Password = request2.Password;
+                    usuario.UserName = request2.UserName;
+                    usuario.FkRol = request2.FkRol;
+                
+                _context.Usuarios.Update(usuario);
+                await _context.SaveChangesAsync();
+
+                return new Response<Usuario>(usuario, "Usuario editado exitosamente");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocurrio un error " + ex.Message);
+            }
+
+        }
+
     }
 }
