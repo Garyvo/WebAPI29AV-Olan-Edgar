@@ -18,6 +18,7 @@ namespace APIOAPE.Services.Services
         }
 
         //Lista de usuarios
+        //Incluye los nombres de los roles para no ver el id foreaneo directamente
         public async Task<Response<List<Usuario>>> GetAll()
         {
             try
@@ -35,6 +36,8 @@ namespace APIOAPE.Services.Services
             }
         }
 
+
+        //Usuario individual buscado por el id que le corresponde
         public async Task<Response<Usuario>> GetbyId(int id)
         {
             try
@@ -50,6 +53,7 @@ namespace APIOAPE.Services.Services
             }
         }
 
+        //  La creacion del usuario utilizando parametros que contiene el usuario nuevo
         public async Task<Response<Usuario>> Create(UsuarioRequest request)
         {
             try
@@ -63,7 +67,7 @@ namespace APIOAPE.Services.Services
                 };
 
                 _context.Usuarios.Add(usuario1);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(); //Se guarda cambios
 
                 return new Response<Usuario>(usuario1, "Usuario Creado exitosamente");
 
@@ -74,6 +78,8 @@ namespace APIOAPE.Services.Services
             }
 
         }
+
+        //Eliminar un usuario en base a su nombre de usuario siendo el primero en buscarlo en la base de datos
         public async Task<Response<Usuario>> DeleteUser(string request)
         {
             try
@@ -81,7 +87,7 @@ namespace APIOAPE.Services.Services
                 Usuario usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.UserName == request);
 
                 _context.Usuarios.Remove(usuario);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(); //Se guarda cambios
 
                 return new Response<Usuario>(usuario, "Usuario Eliminado exitosamente");
 
@@ -93,6 +99,8 @@ namespace APIOAPE.Services.Services
 
         }
 
+        //Actualizando el usuario con ayuda de 2 parametros, uno que es el nombre de usuario y otro que son los datos nuevos
+        //que el administrador quiere actualizar
         public async Task<Response<Usuario>> UpdateUser(string request, UsuarioRequest request2)
         {
             try
@@ -107,7 +115,7 @@ namespace APIOAPE.Services.Services
                     usuario.FkRol = request2.FkRol;
                 
                 _context.Usuarios.Update(usuario);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(); //Se guarda cambios
 
                 return new Response<Usuario>(usuario, "Usuario editado exitosamente");
 

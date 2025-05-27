@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
  namespace Domain.DTO
     {
+
+    //Para hacer el modelado de los datos a enviar de roles
         public class RolRequest
         {
         public int PkRol { get; set; }

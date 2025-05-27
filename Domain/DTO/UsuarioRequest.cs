@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
  namespace Domain.DTO
     {
+    //Modelo resquest de tipo usuario para enviar datos nuevos  
         public class UsuarioRequest
         {
             public string Nombre { get; set; }
